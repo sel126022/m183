@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Welcome to the Homepage!</h1>
+
+    {% if request.user.is_authenticated %}
+        <p>Logged in as: {{ request.user.username }}</p>
+        <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+        <a class="btn btn-dark" href="{% url 'privatepage' %}" role="button">Privatepage</a>
+    {% else %}
+        <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+        <a class="btn btn-info" href="{% url 'signup' %}" role="button">Signup</a>
+    {% endif %}
+
+{% endblock content %}
